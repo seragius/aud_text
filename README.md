@@ -1,20 +1,20 @@
-# 🎙️ Voice CRM - Sistema de CRM con Reconocimiento de Voz y NLP
+# Voice CRM - Sistema de CRM con Reconocimiento de Voz y NLP
 
 Sistema completo de gestión de relaciones con clientes (CRM) que permite registrar interacciones comerciales mediante voz, utilizando reconocimiento automático de voz (ASR) y procesamiento de lenguaje natural (NLP) para extraer información estructurada.
 
-## 🎯 Características principales
+## Características principales
 
-- ✅ **Grabación de voz multiplataforma** (web y móvil)
-- ✅ **Conversión automática de audio a texto** (Whisper API)
-- ✅ **Extracción inteligente de entidades** mediante NLP (cliente, acción, fecha, notas)
-- ✅ **Reconocimiento automático de contactos** desde base de datos pre-cargada
-- ✅ **Gestión completa de CRM** (contactos, empresas, oportunidades, interacciones)
-- ✅ **Interfaz web moderna** con React + TypeScript
-- ✅ **App móvil nativa** con React Native
-- ✅ **API REST segura** con autenticación JWT
-- ✅ **Despliegue con Docker** Compose
+- **Grabación de voz multiplataforma** (web y móvil)
+- **Conversión automática de audio a texto** (Whisper API)
+- **Extracción inteligente de entidades** mediante NLP (cliente, acción, fecha, notas)
+- **Reconocimiento automático de contactos** desde base de datos pre-cargada
+- **Gestión completa de CRM** (contactos, empresas, oportunidades, interacciones)
+- **Interfaz web moderna** con React + TypeScript
+- **App móvil nativa** con React Native
+- **API REST segura** con autenticación JWT
+- **Despliegue con Docker** Compose
 
-## 🏗️ Arquitectura del sistema
+## Arquitectura del sistema
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -49,7 +49,7 @@ Sistema completo de gestión de relaciones con clientes (CRM) que permite regist
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 aud_text/
@@ -104,7 +104,7 @@ aud_text/
 └── README.md
 ```
 
-## 🚀 Stack tecnológico
+## Stack tecnológico
 
 ### Backend
 - **Python 3.11+** - Lenguaje principal
@@ -137,7 +137,7 @@ aud_text/
 - **Docker** & **Docker Compose** - Contenedores
 - **Git** - Control de versiones
 
-## ⚙️ Instalación y despliegue
+## Instalación y despliegue
 
 ### Prerequisitos
 - Docker y Docker Compose
@@ -189,7 +189,7 @@ npm install
 npm start
 ```
 
-## 📊 Esquema de base de datos
+## Esquema de base de datos
 
 ```sql
 -- Tablas principales del CRM
@@ -200,19 +200,19 @@ Interactions (id, contact_id, user_id, type, date, audio_url, transcript, notes)
 Opportunities (id, contact_id, value, close_date, probability, stage)
 ```
 
-## 🎤 Flujo de uso
+## Flujo de uso
 
 1. **Usuario graba nota de voz**: "He quedado con Germán Palomares el próximo viernes para revisar la propuesta"
 2. **Sistema convierte audio a texto** (Whisper API)
 3. **NLP extrae entidades**:
-   - Cliente: "Germán Palomares" → Busca en BD → Encuentra contacto + empresa
+   - Cliente: "Germán Palomares" - Busca en BD - Encuentra contacto + empresa
    - Acción: "Reunión"
-   - Fecha: "Próximo viernes" → Parsea a fecha concreta
+   - Fecha: "Próximo viernes" - Parsea a fecha concreta
    - Notas: "Revisar la propuesta"
 4. **Sistema crea registro en CRM** con toda la información estructurada
 5. **Usuario puede consultar, editar o eliminar** la interacción
 
-## 🔐 Seguridad
+## Seguridad
 
 - Autenticación mediante **JWT tokens**
 - Contraseñas hasheadas con **bcrypt**
@@ -221,7 +221,7 @@ Opportunities (id, contact_id, value, close_date, probability, stage)
 - CORS configurado correctamente
 - Rate limiting en endpoints sensibles
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Backend tests
@@ -236,18 +236,18 @@ npm test
 docker-compose -f docker-compose.test.yml up
 ```
 
-## 📚 Documentación adicional
+## Documentación adicional
 
 - [Arquitectura detallada](docs/ARQUITECTURA.md)
 - [Documentación API REST](docs/API.md)
 - [Memoria del TFG](docs/TFG_MEMORIA.md)
 - [Guía de despliegue](docs/DEPLOYMENT.md)
 
-## 👨‍💻 Autor
+## Autor
 
 Proyecto desarrollado como Trabajo Fin de Grado (TFG)
 
-## 📄 Licencia
+## Licencia
 
 MIT License - Ver archivo LICENSE para más detalles
 

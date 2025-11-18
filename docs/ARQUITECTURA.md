@@ -1,4 +1,4 @@
-# 🏗️ Arquitectura del Sistema Voice CRM
+# Arquitectura del Sistema Voice CRM
 
 ## Índice
 1. [Visión general](#visión-general)
@@ -28,73 +28,73 @@ Voice CRM es un sistema distribuido basado en arquitectura **cliente-servidor** 
 ## 2. Arquitectura de tres capas
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                     CAPA DE PRESENTACIÓN                         │
-│                                                                  │
-│  ┌──────────────────────┐       ┌──────────────────────┐       │
-│  │   Web Application    │       │   Mobile Application │       │
-│  │   ─────────────      │       │   ──────────────     │       │
-│  │   • React 18         │       │   • React Native     │       │
-│  │   • TypeScript       │       │   • TypeScript       │       │
-│  │   • TailwindCSS      │       │   • Expo             │       │
-│  │   • Vite             │       │   • Native Audio     │       │
-│  │   • Web Audio API    │       │   • Navigation       │       │
-│  │   • React Query      │       │   • AsyncStorage     │       │
-│  └──────────┬───────────┘       └──────────┬───────────┘       │
-│             │                               │                   │
-│             └───────────┬───────────────────┘                   │
-└─────────────────────────┼───────────────────────────────────────┘
-                          │
-                          │ HTTPS/REST + JWT
-                          │
-┌─────────────────────────▼───────────────────────────────────────┐
-│                    CAPA DE LÓGICA DE NEGOCIO                     │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │              FastAPI Backend Server                     │    │
-│  │  ┌──────────────────────────────────────────────────┐  │    │
-│  │  │            API REST Endpoints                     │  │    │
-│  │  │  /auth  /contacts  /companies  /interactions     │  │    │
-│  │  └────────────────────┬─────────────────────────────┘  │    │
-│  │                       │                                 │    │
-│  │  ┌────────────────────▼─────────────────────────────┐  │    │
-│  │  │              Service Layer                        │  │    │
-│  │  │                                                   │  │    │
-│  │  │  ┌─────────────┐  ┌─────────────┐  ┌──────────┐ │  │    │
-│  │  │  │   Speech    │  │     NLP     │  │   CRM    │ │  │    │
-│  │  │  │   Service   │──│   Service   │──│ Service  │ │  │    │
-│  │  │  │             │  │             │  │          │ │  │    │
-│  │  │  │ • Whisper   │  │ • GPT-4     │  │ • Match  │ │  │    │
-│  │  │  │   API       │  │ • LangChain │  │ • Create │ │  │    │
-│  │  │  │ • Validate  │  │ • Extract   │  │ • Update │ │  │    │
-│  │  │  │   audio     │  │   entities  │  │ • Query  │ │  │    │
-│  │  │  └─────────────┘  └─────────────┘  └──────────┘ │  │    │
-│  │  └──────────────────────┬───────────────────────────┘  │    │
-│  │                         │                               │    │
-│  │  ┌──────────────────────▼───────────────────────────┐  │    │
-│  │  │            Data Access Layer (ORM)                │  │    │
-│  │  │              SQLAlchemy Models                    │  │    │
-│  │  └───────────────────────────────────────────────────┘  │    │
-│  └────────────────────────────────────────────────────────┘    │
-└─────────────────────────┬───────────────────────────────────────┘
-                          │
-                          │ SQL / Connection Pool
-                          │
-┌─────────────────────────▼───────────────────────────────────────┐
-│                    CAPA DE PERSISTENCIA                          │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │                PostgreSQL Database                      │    │
-│  │                                                         │    │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────────┐         │    │
-│  │  │  Users   │  │Companies │  │  Contacts    │         │    │
-│  │  └──────────┘  └──────────┘  └──────────────┘         │    │
-│  │                                                         │    │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────┐     │    │
-│  │  │Interactions  │  │Opportunities │  │  Notes   │     │    │
-│  │  └──────────────┘  └──────────────┘  └──────────┘     │    │
-│  └────────────────────────────────────────────────────────┘    │
-└──────────────────────────────────────────────────────────────────┘
+
+ CAPA DE PRESENTACIÓN 
+ 
+ 
+ Web Application Mobile Application 
+ 
+ • React 18 • React Native 
+ • TypeScript • TypeScript 
+ • TailwindCSS • Expo 
+ • Vite • Native Audio 
+ • Web Audio API • Navigation 
+ • React Query • AsyncStorage 
+ 
+ 
+ 
+
+ 
+ HTTPS/REST + JWT
+ 
+
+ CAPA DE LÓGICA DE NEGOCIO 
+ 
+ 
+ FastAPI Backend Server 
+ 
+ API REST Endpoints 
+ /auth /contacts /companies /interactions 
+ 
+ 
+ 
+ Service Layer 
+ 
+ 
+ Speech NLP CRM 
+ Service Service Service 
+ 
+ • Whisper • GPT-4 • Match 
+ API • LangChain • Create 
+ • Validate • Extract • Update 
+ audio entities • Query 
+ 
+ 
+ 
+ 
+ Data Access Layer (ORM) 
+ SQLAlchemy Models 
+ 
+ 
+
+ 
+ SQL / Connection Pool
+ 
+
+ CAPA DE PERSISTENCIA 
+ 
+ 
+ PostgreSQL Database 
+ 
+ 
+ Users Companies Contacts 
+ 
+ 
+ 
+ Interactions Opportunities Notes 
+ 
+ 
+
 ```
 
 ---
@@ -104,76 +104,76 @@ Voice CRM es un sistema distribuido basado en arquitectura **cliente-servidor** 
 ### Diagrama Entidad-Relación
 
 ```
-┌──────────────┐
-│    Users     │
-├──────────────┤
-│ id (PK)      │
-│ email        │──────┐
-│ password_hash│      │
-│ name         │      │
-│ role         │      │
-│ created_at   │      │
-└──────────────┘      │
-                      │
-                      │ 1:N
-                      │
-                      ▼
-         ┌────────────────────┐
-         │   Interactions     │
-         ├────────────────────┤
-         │ id (PK)            │
-         │ user_id (FK)       │
-         │ contact_id (FK)    │◄──────┐
-         │ type               │       │
-         │ date               │       │
-         │ audio_url          │       │
-         │ transcript         │       │ N:1
-         │ extracted_data     │       │
-         │ notes              │       │
-         │ created_at         │       │
-         └────────────────────┘       │
-                                      │
-┌──────────────┐                      │
-│  Companies   │                      │
-├──────────────┤                      │
-│ id (PK)      │──────┐               │
-│ name         │      │               │
-│ sector       │      │               │
-│ size         │      │ 1:N           │
-│ employees    │      │               │
-│ revenue      │      ▼               │
-│ website      │   ┌──────────────┐  │
-│ country      │   │   Contacts   │  │
-│ city         │   ├──────────────┤  │
-│ created_at   │   │ id (PK)      │──┘
-└──────────────┘   │ company_id   │
-                   │ name         │
-                   │ surname      │
-                   │ position     │
-                   │ email        │
-                   │ phone_mobile │
-                   │ phone_office │
-                   │ address      │
-                   │ lead_status  │
-                   │ lead_source  │
-                   │ created_at   │
-                   └──────┬───────┘
-                          │
-                          │ 1:N
-                          │
-                          ▼
-                   ┌──────────────────┐
-                   │  Opportunities   │
-                   ├──────────────────┤
-                   │ id (PK)          │
-                   │ contact_id (FK)  │
-                   │ title            │
-                   │ value            │
-                   │ probability      │
-                   │ stage            │
-                   │ close_date       │
-                   │ created_at       │
-                   └──────────────────┘
+
+ Users 
+
+ id (PK) 
+ email 
+ password_hash 
+ name 
+ role 
+ created_at 
+ 
+ 
+ 1:N
+ 
+ 
+ 
+ Interactions 
+ 
+ id (PK) 
+ user_id (FK) 
+ contact_id (FK) 
+ type 
+ date 
+ audio_url 
+ transcript N:1
+ extracted_data 
+ notes 
+ created_at 
+ 
+ 
+ 
+ Companies 
+ 
+ id (PK) 
+ name 
+ sector 
+ size 1:N 
+ employees 
+ revenue 
+ website 
+ country Contacts 
+ city 
+ created_at id (PK) 
+ company_id 
+ name 
+ surname 
+ position 
+ email 
+ phone_mobile 
+ phone_office 
+ address 
+ lead_status 
+ lead_source 
+ created_at 
+ 
+ 
+ 1:N
+ 
+ 
+ 
+ Opportunities 
+ 
+ id (PK) 
+ contact_id (FK) 
+ title 
+ value 
+ probability 
+ stage 
+ close_date 
+ created_at 
+ 
 ```
 
 ### Esquema SQL detallado
@@ -181,52 +181,52 @@ Voice CRM es un sistema distribuido basado en arquitectura **cliente-servidor** 
 #### Tabla: users
 ```sql
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    role VARCHAR(50) DEFAULT 'user',
-    is_active BOOLEAN DEFAULT true,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ id SERIAL PRIMARY KEY,
+ email VARCHAR(255) UNIQUE NOT NULL,
+ password_hash VARCHAR(255) NOT NULL,
+ name VARCHAR(255) NOT NULL,
+ role VARCHAR(50) DEFAULT 'user',
+ is_active BOOLEAN DEFAULT true,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 #### Tabla: companies
 ```sql
 CREATE TABLE companies (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    sector VARCHAR(100),
-    size VARCHAR(50),
-    employees INT,
-    revenue DECIMAL(15,2),
-    website VARCHAR(255),
-    country VARCHAR(100),
-    city VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(255) NOT NULL,
+ sector VARCHAR(100),
+ size VARCHAR(50),
+ employees INT,
+ revenue DECIMAL(15,2),
+ website VARCHAR(255),
+ country VARCHAR(100),
+ city VARCHAR(100),
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
 #### Tabla: contacts
 ```sql
 CREATE TABLE contacts (
-    id SERIAL PRIMARY KEY,
-    company_id INT REFERENCES companies(id) ON DELETE SET NULL,
-    name VARCHAR(100) NOT NULL,
-    surname VARCHAR(100),
-    position VARCHAR(100),
-    email VARCHAR(255),
-    phone_mobile VARCHAR(50),
-    phone_office VARCHAR(50),
-    address TEXT,
-    lead_type VARCHAR(50) DEFAULT 'lead',
-    lead_status VARCHAR(50) DEFAULT 'new',
-    lead_source VARCHAR(100),
-    funnel_stage VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ id SERIAL PRIMARY KEY,
+ company_id INT REFERENCES companies(id) ON DELETE SET NULL,
+ name VARCHAR(100) NOT NULL,
+ surname VARCHAR(100),
+ position VARCHAR(100),
+ email VARCHAR(255),
+ phone_mobile VARCHAR(50),
+ phone_office VARCHAR(50),
+ address TEXT,
+ lead_type VARCHAR(50) DEFAULT 'lead',
+ lead_status VARCHAR(50) DEFAULT 'new',
+ lead_source VARCHAR(100),
+ funnel_stage VARCHAR(100),
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_contacts_name ON contacts(name, surname);
@@ -236,16 +236,16 @@ CREATE INDEX idx_contacts_company ON contacts(company_id);
 #### Tabla: interactions
 ```sql
 CREATE TABLE interactions (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    contact_id INT REFERENCES contacts(id) ON DELETE CASCADE,
-    type VARCHAR(50) NOT NULL,
-    interaction_date TIMESTAMP NOT NULL,
-    audio_url VARCHAR(500),
-    transcript TEXT,
-    extracted_data JSONB,
-    notes TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ id SERIAL PRIMARY KEY,
+ user_id INT REFERENCES users(id) ON DELETE CASCADE,
+ contact_id INT REFERENCES contacts(id) ON DELETE CASCADE,
+ type VARCHAR(50) NOT NULL,
+ interaction_date TIMESTAMP NOT NULL,
+ audio_url VARCHAR(500),
+ transcript TEXT,
+ extracted_data JSONB,
+ notes TEXT,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_interactions_contact ON interactions(contact_id);
@@ -255,16 +255,16 @@ CREATE INDEX idx_interactions_date ON interactions(interaction_date);
 #### Tabla: opportunities
 ```sql
 CREATE TABLE opportunities (
-    id SERIAL PRIMARY KEY,
-    contact_id INT REFERENCES contacts(id) ON DELETE CASCADE,
-    title VARCHAR(255) NOT NULL,
-    value DECIMAL(15,2),
-    probability INT CHECK (probability >= 0 AND probability <= 100),
-    stage VARCHAR(100),
-    close_date DATE,
-    is_closed BOOLEAN DEFAULT false,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ id SERIAL PRIMARY KEY,
+ contact_id INT REFERENCES contacts(id) ON DELETE CASCADE,
+ title VARCHAR(255) NOT NULL,
+ value DECIMAL(15,2),
+ probability INT CHECK (probability >= 0 AND probability <= 100),
+ stage VARCHAR(100),
+ close_date DATE,
+ is_closed BOOLEAN DEFAULT false,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
@@ -277,44 +277,44 @@ CREATE TABLE opportunities (
 #### Estructura de directorios
 ```
 backend/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                 # Entry point
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── deps.py             # Dependencies (DB, auth)
-│   │   ├── auth.py             # Auth endpoints
-│   │   ├── contacts.py         # Contacts CRUD
-│   │   ├── companies.py        # Companies CRUD
-│   │   ├── interactions.py     # Interactions + Voice
-│   │   └── opportunities.py    # Opportunities CRUD
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── config.py           # Settings
-│   │   ├── security.py         # JWT, password hashing
-│   │   └── database.py         # DB connection
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── company.py
-│   │   ├── contact.py
-│   │   ├── interaction.py
-│   │   └── opportunity.py
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   ├── user.py             # Pydantic schemas
-│   │   ├── company.py
-│   │   ├── contact.py
-│   │   ├── interaction.py
-│   │   └── opportunity.py
-│   └── services/
-│       ├── __init__.py
-│       ├── speech.py           # Whisper integration
-│       ├── nlp.py              # Entity extraction
-│       └── crm.py              # Contact matching logic
-├── requirements.txt
-├── Dockerfile
-└── .env.example
+ app/
+ __init__.py
+ main.py # Entry point
+ api/
+ __init__.py
+ deps.py # Dependencies (DB, auth)
+ auth.py # Auth endpoints
+ contacts.py # Contacts CRUD
+ companies.py # Companies CRUD
+ interactions.py # Interactions + Voice
+ opportunities.py # Opportunities CRUD
+ core/
+ __init__.py
+ config.py # Settings
+ security.py # JWT, password hashing
+ database.py # DB connection
+ models/
+ __init__.py
+ user.py
+ company.py
+ contact.py
+ interaction.py
+ opportunity.py
+ schemas/
+ __init__.py
+ user.py # Pydantic schemas
+ company.py
+ contact.py
+ interaction.py
+ opportunity.py
+ services/
+ __init__.py
+ speech.py # Whisper integration
+ nlp.py # Entity extraction
+ crm.py # Contact matching logic
+ requirements.txt
+ Dockerfile
+ .env.example
 ```
 
 #### Componentes clave
@@ -328,10 +328,10 @@ backend/
 **2. NLP Service** (`services/nlp.py`)
 - Recibe texto transcrito
 - Utiliza GPT-4 + LangChain para extraer:
-  - **Nombre de contacto**: Busca coincidencias en BD
-  - **Tipo de acción**: Reunión, llamada, email, etc.
-  - **Fecha**: Parsea expresiones naturales ("próximo viernes")
-  - **Notas adicionales**: Contexto relevante
+ - **Nombre de contacto**: Busca coincidencias en BD
+ - **Tipo de acción**: Reunión, llamada, email, etc.
+ - **Fecha**: Parsea expresiones naturales ("próximo viernes")
+ - **Notas adicionales**: Contexto relevante
 - Estructura la información en formato JSON
 
 **3. CRM Service** (`services/crm.py`)
@@ -344,44 +344,44 @@ backend/
 #### Estructura
 ```
 frontend/
-├── src/
-│   ├── components/
-│   │   ├── common/
-│   │   │   ├── Button.tsx
-│   │   │   ├── Input.tsx
-│   │   │   └── Modal.tsx
-│   │   ├── layout/
-│   │   │   ├── Header.tsx
-│   │   │   ├── Sidebar.tsx
-│   │   │   └── Layout.tsx
-│   │   ├── voice/
-│   │   │   ├── VoiceRecorder.tsx    # Componente grabación
-│   │   │   └── AudioPlayer.tsx
-│   │   └── crm/
-│   │       ├── ContactList.tsx
-│   │       ├── ContactDetail.tsx
-│   │       └── InteractionCard.tsx
-│   ├── pages/
-│   │   ├── Login.tsx
-│   │   ├── Dashboard.tsx
-│   │   ├── Contacts.tsx
-│   │   ├── Companies.tsx
-│   │   └── Interactions.tsx
-│   ├── services/
-│   │   ├── api.ts              # Axios instance
-│   │   ├── auth.ts
-│   │   └── crm.ts
-│   ├── hooks/
-│   │   ├── useAuth.ts
-│   │   ├── useVoiceRecorder.ts
-│   │   └── useContacts.ts
-│   ├── utils/
-│   │   └── audioUtils.ts
-│   ├── App.tsx
-│   └── main.tsx
-├── package.json
-├── vite.config.ts
-└── tailwind.config.js
+ src/
+ components/
+ common/
+ Button.tsx
+ Input.tsx
+ Modal.tsx
+ layout/
+ Header.tsx
+ Sidebar.tsx
+ Layout.tsx
+ voice/
+ VoiceRecorder.tsx # Componente grabación
+ AudioPlayer.tsx
+ crm/
+ ContactList.tsx
+ ContactDetail.tsx
+ InteractionCard.tsx
+ pages/
+ Login.tsx
+ Dashboard.tsx
+ Contacts.tsx
+ Companies.tsx
+ Interactions.tsx
+ services/
+ api.ts # Axios instance
+ auth.ts
+ crm.ts
+ hooks/
+ useAuth.ts
+ useVoiceRecorder.ts
+ useContacts.ts
+ utils/
+ audioUtils.ts
+ App.tsx
+ main.tsx
+ package.json
+ vite.config.ts
+ tailwind.config.js
 ```
 
 #### Características
@@ -394,96 +394,96 @@ frontend/
 
 ```
 mobile/
-├── src/
-│   ├── screens/
-│   │   ├── LoginScreen.tsx
-│   │   ├── DashboardScreen.tsx
-│   │   ├── VoiceRecordScreen.tsx
-│   │   └── ContactsScreen.tsx
-│   ├── components/
-│   ├── services/
-│   │   └── api.ts
-│   ├── navigation/
-│   │   └── AppNavigator.tsx
-│   └── App.tsx
-├── package.json
-└── app.json
+ src/
+ screens/
+ LoginScreen.tsx
+ DashboardScreen.tsx
+ VoiceRecordScreen.tsx
+ ContactsScreen.tsx
+ components/
+ services/
+ api.ts
+ navigation/
+ AppNavigator.tsx
+ App.tsx
+ package.json
+ app.json
 ```
 
 ---
 
 ## 5. Flujo de datos
 
-### Flujo completo: Grabación de voz → CRM
+### Flujo completo: Grabación de voz -> CRM
 
 ```
 1. USUARIO (Web/Mobile)
-   │
-   ├─ Graba audio: "He quedado con Germán Palomares el viernes"
-   │
-   ▼
+ 
+ Graba audio: "He quedado con Germán Palomares el viernes"
+ 
+ 
 2. FRONTEND
-   │
-   ├─ Captura audio (Web Audio API / React Native Audio)
-   ├─ Convierte a formato compatible (WAV/MP3)
-   ├─ Crea FormData con archivo
-   │
-   ▼
+ 
+ Captura audio (Web Audio API / React Native Audio)
+ Convierte a formato compatible (WAV/MP3)
+ Crea FormData con archivo
+ 
+ 
 3. API BACKEND
-   │
-   ├─ POST /api/interactions/voice
-   ├─ Autenticación JWT
-   ├─ Validación de archivo
-   │
-   ▼
+ 
+ POST /api/interactions/voice
+ Autenticación JWT
+ Validación de archivo
+ 
+ 
 4. SPEECH SERVICE
-   │
-   ├─ Envía audio a Whisper API
-   ├─ Recibe: "He quedado con Germán Palomares el viernes"
-   │
-   ▼
+ 
+ Envía audio a Whisper API
+ Recibe: "He quedado con Germán Palomares el viernes"
+ 
+ 
 5. NLP SERVICE
-   │
-   ├─ Prompt GPT-4:
-   │   "Extrae: nombre, acción, fecha del siguiente texto..."
-   ├─ Recibe JSON:
-   │   {
-   │     "name": "Germán Palomares",
-   │     "action": "Reunión",
-   │     "date": "2025-11-22",
-   │     "notes": "..."
-   │   }
-   │
-   ▼
+ 
+ Prompt GPT-4:
+ "Extrae: nombre, acción, fecha del siguiente texto..."
+ Recibe JSON:
+ {
+ "name": "Germán Palomares",
+ "action": "Reunión",
+ "date": "2025-11-22",
+ "notes": "..."
+ }
+ 
+ 
 6. CRM SERVICE
-   │
-   ├─ Busca "Germán Palomares" en BD (fuzzy matching)
-   ├─ Encuentra contact_id = 42
-   ├─ Obtiene empresa asociada: "Acme Corp"
-   │
-   ▼
+ 
+ Busca "Germán Palomares" en BD (fuzzy matching)
+ Encuentra contact_id = 42
+ Obtiene empresa asociada: "Acme Corp"
+ 
+ 
 7. DATABASE
-   │
-   ├─ INSERT INTO interactions (...) VALUES (...)
-   ├─ Commit transaction
-   │
-   ▼
+ 
+ INSERT INTO interactions (...) VALUES (...)
+ Commit transaction
+ 
+ 
 8. RESPONSE
-   │
-   └─ 201 Created
-      {
-        "id": 123,
-        "contact": {
-          "id": 42,
-          "name": "Germán",
-          "surname": "Palomares",
-          "company": "Acme Corp"
-        },
-        "type": "meeting",
-        "date": "2025-11-22",
-        "transcript": "...",
-        "notes": "..."
-      }
+ 
+ 201 Created
+ {
+ "id": 123,
+ "contact": {
+ "id": 42,
+ "name": "Germán",
+ "surname": "Palomares",
+ "company": "Acme Corp"
+ },
+ "type": "meeting",
+ "date": "2025-11-22",
+ "transcript": "...",
+ "notes": "..."
+ }
 ```
 
 ---
@@ -526,10 +526,10 @@ mobile/
 - **Actualización**: Mejora sin reentrenamiento
 
 **Alternativa considerada**: spaCy + entrenamiento custom
-- ❌ Requiere dataset etiquetado (500+ ejemplos)
-- ❌ Mantenimiento de modelo
-- ✅ Menor latencia
-- ✅ Menor costo operativo
+- Requiere dataset etiquetado (500+ ejemplos)
+- Mantenimiento de modelo
+- Menor latencia
+- Menor costo operativo
 
 **Decisión**: GPT-4 para MVP, migrar a modelo custom si escala
 
@@ -560,28 +560,28 @@ mobile/
 ### Implementaciones
 
 1. **Autenticación**
-   - JWT con expiración (24h)
-   - Refresh tokens
-   - Password hashing con bcrypt (cost=12)
+ - JWT con expiración (24h)
+ - Refresh tokens
+ - Password hashing con bcrypt (cost=12)
 
 2. **Autorización**
-   - Role-based access control (RBAC)
-   - Ownership validation (users solo ven sus datos)
+ - Role-based access control (RBAC)
+ - Ownership validation (users solo ven sus datos)
 
 3. **Validación**
-   - Pydantic schemas en todos los endpoints
-   - Sanitización de inputs
-   - File upload validation (tipo, tamaño)
+ - Pydantic schemas en todos los endpoints
+ - Sanitización de inputs
+ - File upload validation (tipo, tamaño)
 
 4. **Comunicación**
-   - HTTPS en producción
-   - CORS configurado correctamente
-   - Rate limiting (100 req/min por IP)
+ - HTTPS en producción
+ - CORS configurado correctamente
+ - Rate limiting (100 req/min por IP)
 
 5. **Base de datos**
-   - Prepared statements (SQLAlchemy ORM)
-   - Backups automáticos diarios
-   - Encriptación en reposo (PostgreSQL)
+ - Prepared statements (SQLAlchemy ORM)
+ - Backups automáticos diarios
+ - Encriptación en reposo (PostgreSQL)
 
 ### Amenazas mitigadas
 
@@ -599,11 +599,11 @@ mobile/
 
 Esta arquitectura proporciona:
 
-✅ **Modularidad**: Componentes independientes y reemplazables
-✅ **Escalabilidad**: Diseño preparado para crecimiento
-✅ **Mantenibilidad**: Código limpio y documentado
-✅ **Seguridad**: Múltiples capas de protección
-✅ **Usabilidad**: Interfaces intuitivas multiplataforma
-✅ **Extensibilidad**: Fácil añadir nuevas funcionalidades
+ **Modularidad**: Componentes independientes y reemplazables
+ **Escalabilidad**: Diseño preparado para crecimiento
+ **Mantenibilidad**: Código limpio y documentado
+ **Seguridad**: Múltiples capas de protección
+ **Usabilidad**: Interfaces intuitivas multiplataforma
+ **Extensibilidad**: Fácil añadir nuevas funcionalidades
 
 El sistema está diseñado siguiendo **best practices** de ingeniería de software y cumple todos los objetivos del TFG.

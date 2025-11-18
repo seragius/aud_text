@@ -7,65 +7,65 @@
 ## ÍNDICE
 
 1. **Introducción**
-   - 1.1. Contexto y motivación
-   - 1.2. Objetivos generales
-   - 1.3. Objetivos específicos
-   - 1.4. Estructura del documento
+ - 1.1. Contexto y motivación
+ - 1.2. Objetivos generales
+ - 1.3. Objetivos específicos
+ - 1.4. Estructura del documento
 
 2. **Estado del arte**
-   - 2.1. Sistemas CRM actuales
-   - 2.2. Reconocimiento automático de voz
-   - 2.3. Procesamiento de lenguaje natural
-   - 2.4. Análisis comparativo de soluciones existentes
+ - 2.1. Sistemas CRM actuales
+ - 2.2. Reconocimiento automático de voz
+ - 2.3. Procesamiento de lenguaje natural
+ - 2.4. Análisis comparativo de soluciones existentes
 
 3. **Análisis y especificación de requisitos**
-   - 3.1. Requisitos funcionales
-   - 3.2. Requisitos no funcionales
-   - 3.3. Casos de uso
-   - 3.4. Historias de usuario
+ - 3.1. Requisitos funcionales
+ - 3.2. Requisitos no funcionales
+ - 3.3. Casos de uso
+ - 3.4. Historias de usuario
 
 4. **Diseño del sistema**
-   - 4.1. Arquitectura general
-   - 4.2. Modelo de datos
-   - 4.3. Diseño de interfaces
-   - 4.4. Flujos de interacción
-   - 4.5. Decisiones tecnológicas
+ - 4.1. Arquitectura general
+ - 4.2. Modelo de datos
+ - 4.3. Diseño de interfaces
+ - 4.4. Flujos de interacción
+ - 4.5. Decisiones tecnológicas
 
 5. **Implementación**
-   - 5.1. Backend - API REST
-   - 5.2. Base de datos
-   - 5.3. Módulo de reconocimiento de voz
-   - 5.4. Módulo de procesamiento NLP
-   - 5.5. Frontend web
-   - 5.6. Aplicación móvil
-   - 5.7. Despliegue y DevOps
+ - 5.1. Backend - API REST
+ - 5.2. Base de datos
+ - 5.3. Módulo de reconocimiento de voz
+ - 5.4. Módulo de procesamiento NLP
+ - 5.5. Frontend web
+ - 5.6. Aplicación móvil
+ - 5.7. Despliegue y DevOps
 
 6. **Pruebas y validación**
-   - 6.1. Estrategia de testing
-   - 6.2. Pruebas unitarias
-   - 6.3. Pruebas de integración
-   - 6.4. Pruebas de usuario
-   - 6.5. Evaluación de precisión del sistema NLP
+ - 6.1. Estrategia de testing
+ - 6.2. Pruebas unitarias
+ - 6.3. Pruebas de integración
+ - 6.4. Pruebas de usuario
+ - 6.5. Evaluación de precisión del sistema NLP
 
 7. **Resultados**
-   - 7.1. Funcionalidades implementadas
-   - 7.2. Métricas de rendimiento
-   - 7.3. Análisis de precisión del reconocimiento
-   - 7.4. Feedback de usuarios
+ - 7.1. Funcionalidades implementadas
+ - 7.2. Métricas de rendimiento
+ - 7.3. Análisis de precisión del reconocimiento
+ - 7.4. Feedback de usuarios
 
 8. **Conclusiones y trabajo futuro**
-   - 8.1. Objetivos cumplidos
-   - 8.2. Limitaciones encontradas
-   - 8.3. Líneas de trabajo futuro
-   - 8.4. Reflexión personal
+ - 8.1. Objetivos cumplidos
+ - 8.2. Limitaciones encontradas
+ - 8.3. Líneas de trabajo futuro
+ - 8.4. Reflexión personal
 
 9. **Referencias bibliográficas**
 
 10. **Anexos**
-    - Anexo A: Manual de usuario
-    - Anexo B: Manual de instalación
-    - Anexo C: Documentación API
-    - Anexo D: Código fuente (repositorio)
+ - Anexo A: Manual de usuario
+ - Anexo B: Manual de instalación
+ - Anexo C: Documentación API
+ - Anexo D: Código fuente (repositorio)
 
 ---
 
@@ -214,8 +214,8 @@ Todos los CRM incluyen:
 **Comparativa para este proyecto**:
 | Criterio | Whisper | Google | AWS |
 |----------|---------|--------|-----|
-| Precisión español | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Facilidad integración | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Precisión español | | | |
+| Facilidad integración | | | |
 | Coste | Bajo | Medio | Medio |
 | Documentación | Excelente | Excelente | Buena |
 
@@ -230,8 +230,8 @@ Todos los CRM incluyen:
 - Herramientas: spaCy, Transformers, GPT
 
 **Temporal Expression Recognition**
-- "próximo viernes" → 2025-11-22
-- "dentro de dos semanas" → 2025-12-02
+- "próximo viernes" -> 2025-11-22
+- "dentro de dos semanas" -> 2025-12-02
 - Librerías: dateparser, duckling
 
 **Intent Classification**
@@ -240,17 +240,17 @@ Todos los CRM incluyen:
 #### Enfoques posibles
 
 **Enfoque 1: Modelos especializados (spaCy)**
-- ✅ Rápido, bajo coste operativo
-- ✅ Control total sobre el modelo
-- ❌ Requiere dataset etiquetado (500+ ejemplos)
-- ❌ Mantenimiento del modelo
+- Rápido, bajo coste operativo
+- Control total sobre el modelo
+- Requiere dataset etiquetado (500+ ejemplos)
+- Mantenimiento del modelo
 
 **Enfoque 2: Large Language Models (GPT-4)**
-- ✅ Zero-shot learning (sin entrenamiento)
-- ✅ Comprensión contextual superior
-- ✅ Fácil iterar prompts
-- ❌ Latencia mayor (~2s)
-- ❌ Coste por llamada ($0.002-0.01)
+- Zero-shot learning (sin entrenamiento)
+- Comprensión contextual superior
+- Fácil iterar prompts
+- Latencia mayor (~2s)
+- Coste por llamada ($0.002-0.01)
 
 **Decisión para MVP**: GPT-4 + LangChain
 - Permite validar concepto rápidamente
@@ -308,10 +308,10 @@ Nuestro sistema aporta:
 #### RF3. Procesamiento de voz
 - RF3.1. El sistema debe convertir audio a texto mediante Whisper API
 - RF3.2. El sistema debe extraer las siguientes entidades del texto:
-  - Nombre de contacto
-  - Tipo de acción (reunión, llamada, email, etc.)
-  - Fecha y hora
-  - Notas adicionales
+ - Nombre de contacto
+ - Tipo de acción (reunión, llamada, email, etc.)
+ - Fecha y hora
+ - Notas adicionales
 - RF3.3. El sistema debe buscar coincidencias de contacto en BD
 - RF3.4. El sistema debe autocompletar empresa y datos si encuentra coincidencia
 
@@ -391,10 +391,10 @@ Nuestro sistema aporta:
 9. Backend encuentra "Germán Palomares" en BD (ID=42, empresa="Acme Corp")
 10. Backend crea registro en tabla interactions
 11. Sistema muestra resultado:
-    - Contacto: Germán Palomares (Acme Corp)
-    - Tipo: Reunión
-    - Fecha: 22/11/2025
-    - Notas: "Revisar propuesta migración cloud"
+ - Contacto: Germán Palomares (Acme Corp)
+ - Tipo: Reunión
+ - Fecha: 22/11/2025
+ - Notas: "Revisar propuesta migración cloud"
 12. Usuario confirma o edita si necesario
 
 **Flujo alternativo 4a**: Audio demasiado largo
@@ -415,9 +415,9 @@ Nuestro sistema aporta:
 1. Usuario accede a "Contactos"
 2. Usuario busca "Germán Palomares"
 3. Sistema muestra ficha con:
-   - Datos personales
-   - Empresa asociada
-   - Lista de interacciones ordenadas por fecha
+ - Datos personales
+ - Empresa asociada
+ - Lista de interacciones ordenadas por fecha
 4. Usuario selecciona interacción
 5. Sistema muestra detalle completo + audio reproducible
 
@@ -484,72 +484,72 @@ Ver sección 3 de **ARQUITECTURA.md**
 
 **Pantalla 1: Dashboard**
 ```
-┌────────────────────────────────────────────────┐
-│  VoiceCRM          [Buscar...]    [@Usuario ▾] │
-├────────────────────────────────────────────────┤
-│                                                 │
-│  [🎤  Grabar nueva interacción]                │
-│                                                 │
-│  Actividad reciente                             │
-│  ┌──────────────────────────────────────────┐ │
-│  │ 🟢 Reunión con Germán Palomares          │ │
-│  │    Acme Corp · hace 2 horas              │ │
-│  └──────────────────────────────────────────┘ │
-│  ┌──────────────────────────────────────────┐ │
-│  │ 📞 Llamada con María González            │ │
-│  │    TechStart · ayer                      │ │
-│  └──────────────────────────────────────────┘ │
-│                                                 │
-│  Métricas                                       │
-│  [15 interacciones] [8 contactos] [3 opor.]   │
-│                                                 │
-└────────────────────────────────────────────────┘
+
+ VoiceCRM [Buscar...] [@Usuario ] 
+
+ 
+ [ Grabar nueva interacción] 
+ 
+ Actividad reciente 
+ 
+ Reunión con Germán Palomares 
+ Acme Corp · hace 2 horas 
+ 
+ 
+ Llamada con María González 
+ TechStart · ayer 
+ 
+ 
+ Métricas 
+ [15 interacciones] [8 contactos] [3 opor.] 
+ 
+
 ```
 
 **Pantalla 2: Grabación de voz**
 ```
-┌────────────────────────────────────────────────┐
-│  ← Volver                                       │
-├────────────────────────────────────────────────┤
-│                                                 │
-│           Grabando interacción...               │
-│                                                 │
-│              ⏺  00:23                          │
-│                                                 │
-│         [███████████████░░░░░░]                │
-│                                                 │
-│         "He quedado con Germán                  │
-│          Palomares el viernes..."               │
-│                                                 │
-│                                                 │
-│         [ ⏹ Detener grabación ]                │
-│                                                 │
-└────────────────────────────────────────────────┘
+
+ ← Volver 
+
+ 
+ Grabando interacción... 
+ 
+ ⏺ 00:23 
+ 
+ [] 
+ 
+ "He quedado con Germán 
+ Palomares el viernes..." 
+ 
+ 
+ [ ⏹ Detener grabación ] 
+ 
+
 ```
 
 **Pantalla 3: Resultado procesado**
 ```
-┌────────────────────────────────────────────────┐
-│  ← Volver                   [Guardar] [Editar] │
-├────────────────────────────────────────────────┤
-│                                                 │
-│  ✅ Interacción procesada                      │
-│                                                 │
-│  Contacto:                                      │
-│  Germán Palomares                               │
-│  Acme Corp · CTO                                │
-│                                                 │
-│  Tipo: Reunión 📅                              │
-│  Fecha: 22 Nov 2025, 15:00                      │
-│                                                 │
-│  Notas:                                         │
-│  Revisar propuesta de migración cloud.          │
-│  Presupuesto aprox. 50K€.                       │
-│                                                 │
-│  Transcripción completa: [Ver]                  │
-│  Audio original: [▶️ Reproducir]               │
-│                                                 │
-└────────────────────────────────────────────────┘
+
+ ← Volver [Guardar] [Editar] 
+
+ 
+ Interacción procesada 
+ 
+ Contacto: 
+ Germán Palomares 
+ Acme Corp · CTO 
+ 
+ Tipo: Reunión 
+ Fecha: 22 Nov 2025, 15:00 
+ 
+ Notas: 
+ Revisar propuesta de migración cloud. 
+ Presupuesto aprox. 50K€. 
+ 
+ Transcripción completa: [Ver] 
+ Audio original: [ Reproducir] 
+ 
+
 ```
 
 #### Wireframes - Aplicación Móvil
@@ -584,12 +584,12 @@ Ver sección 5 de **ARQUITECTURA.md** - "Flujo de datos"
 **Estructura de proyecto**:
 ```
 backend/
-├── app/
-│   ├── api/          # Endpoints REST
-│   ├── core/         # Config, seguridad, DB
-│   ├── models/       # SQLAlchemy models
-│   ├── schemas/      # Pydantic schemas
-│   └── services/     # Lógica de negocio
+ app/
+ api/ # Endpoints REST
+ core/ # Config, seguridad, DB
+ models/ # SQLAlchemy models
+ schemas/ # Pydantic schemas
+ services/ # Lógica de negocio
 ```
 
 **Endpoints principales**:
@@ -636,15 +636,15 @@ alembic upgrade head
 **Código ejemplo**:
 ```python
 async def transcribe_audio(audio_file: UploadFile) -> str:
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+ client = OpenAI(api_key=settings.OPENAI_API_KEY)
 
-    transcript = client.audio.transcriptions.create(
-        model="whisper-1",
-        file=audio_file.file,
-        language="es"
-    )
+ transcript = client.audio.transcriptions.create(
+ model="whisper-1",
+ file=audio_file.file,
+ language="es"
+ )
 
-    return transcript.text
+ return transcript.text
 ```
 
 ### 5.4. Módulo de procesamiento NLP
@@ -688,19 +688,19 @@ Responde en JSON con las claves: contact_name, action_type, date, notes
 **Ejemplo**:
 ```typescript
 const startRecording = async () => {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  const mediaRecorder = new MediaRecorder(stream);
+ const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+ const mediaRecorder = new MediaRecorder(stream);
 
-  mediaRecorder.ondataavailable = (e) => {
-    chunks.push(e.data);
-  };
+ mediaRecorder.ondataavailable = (e) => {
+ chunks.push(e.data);
+ };
 
-  mediaRecorder.onstop = async () => {
-    const blob = new Blob(chunks, { type: 'audio/webm' });
-    await uploadAudio(blob);
-  };
+ mediaRecorder.onstop = async () => {
+ const blob = new Blob(chunks, { type: 'audio/webm' });
+ await uploadAudio(blob);
+ };
 
-  mediaRecorder.start();
+ mediaRecorder.start();
 };
 ```
 
@@ -717,7 +717,7 @@ import { Audio } from 'expo-av';
 
 const recording = new Audio.Recording();
 await recording.prepareToRecordAsync(
-  Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
+ Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
 );
 await recording.startAsync();
 
@@ -735,21 +735,21 @@ const uri = recording.getURI();
 
 ```yaml
 services:
-  db:
-    image: postgres:15
+ db:
+ image: postgres:15
 
-  backend:
-    build: ./backend
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgresql://...
-      OPENAI_API_KEY: sk-...
+ backend:
+ build: ./backend
+ depends_on:
+ - db
+ environment:
+ DATABASE_URL: postgresql://...
+ OPENAI_API_KEY: sk-...
 
-  frontend:
-    build: ./frontend
-    depends_on:
-      - backend
+ frontend:
+ build: ./frontend
+ depends_on:
+ - backend
 ```
 
 **CI/CD** (futuro):
@@ -773,23 +773,23 @@ services:
 **Backend** (pytest):
 ```python
 def test_extract_entities_valid():
-    text = "Reunión con Juan Pérez mañana a las 3pm"
-    result = nlp_service.extract_entities(text)
+ text = "Reunión con Juan Pérez mañana a las 3pm"
+ result = nlp_service.extract_entities(text)
 
-    assert result["contact_name"] == "Juan Pérez"
-    assert result["action_type"] == "meeting"
-    assert result["notes"] is not None
+ assert result["contact_name"] == "Juan Pérez"
+ assert result["action_type"] == "meeting"
+ assert result["notes"] is not None
 ```
 
 **Frontend** (Vitest + React Testing Library):
 ```typescript
 test('VoiceRecorder starts recording on button click', () => {
-  render(<VoiceRecorder />);
-  const button = screen.getByText('Grabar');
+ render(<VoiceRecorder />);
+ const button = screen.getByText('Grabar');
 
-  fireEvent.click(button);
+ fireEvent.click(button);
 
-  expect(screen.getByText('Grabando...')).toBeInTheDocument();
+ expect(screen.getByText('Grabando...')).toBeInTheDocument();
 });
 ```
 
@@ -798,16 +798,16 @@ test('VoiceRecorder starts recording on button click', () => {
 **API endpoints**:
 ```python
 def test_create_interaction_from_voice(client):
-    audio_file = open('test_audio.mp3', 'rb')
+ audio_file = open('test_audio.mp3', 'rb')
 
-    response = client.post('/api/interactions/voice',
-                          files={'audio': audio_file},
-                          headers={'Authorization': f'Bearer {token}'})
+ response = client.post('/api/interactions/voice',
+ files={'audio': audio_file},
+ headers={'Authorization': f'Bearer {token}'})
 
-    assert response.status_code == 201
-    data = response.json()
-    assert 'contact' in data
-    assert 'transcript' in data
+ assert response.status_code == 201
+ data = response.json()
+ assert 'contact' in data
+ assert 'transcript' in data
 ```
 
 ### 6.4. Pruebas de usuario
@@ -831,10 +831,10 @@ def test_create_interaction_from_voice(client):
 **Métricas**:
 - **Word Error Rate (WER)** del transcriptor: <5%
 - **Entity Extraction Accuracy**:
-  - Contacto: 92% exactitud
-  - Acción: 88%
-  - Fecha: 85%
-  - Overall F1-score: 0.89
+ - Contacto: 92% exactitud
+ - Acción: 88%
+ - Fecha: 85%
+ - Overall F1-score: 0.89
 
 **Casos fallidos comunes**:
 - Nombres poco comunes o extranjeros
@@ -847,7 +847,7 @@ def test_create_interaction_from_voice(client):
 
 ### 7.1. Funcionalidades implementadas
 
-✅ **Todas las funcionalidades core implementadas**:
+ **Todas las funcionalidades core implementadas**:
 - Registro e autenticación
 - Grabación de voz (web + mobile)
 - Transcripción automática
@@ -861,10 +861,10 @@ def test_create_interaction_from_voice(client):
 
 | Métrica | Objetivo | Resultado |
 |---------|----------|-----------|
-| Latencia API (p95) | <200ms | 145ms ✅ |
-| Procesamiento 1min audio | <10s | 6.2s ✅ |
-| Usuarios concurrentes | 100+ | 150 ✅ |
-| Uptime (2 semanas) | >99% | 99.8% ✅ |
+| Latencia API (p95) | <200ms | 145ms |
+| Procesamiento 1min audio | <10s | 6.2s |
+| Usuarios concurrentes | 100+ | 150 |
+| Uptime (2 semanas) | >99% | 99.8% |
 
 ### 7.3. Análisis de precisión del reconocimiento
 
@@ -899,16 +899,16 @@ def test_create_interaction_from_voice(client):
 
 ### 8.1. Objetivos cumplidos
 
-✅ **Todos los objetivos generales y específicos han sido alcanzados**:
+ **Todos los objetivos generales y específicos han sido alcanzados**:
 
-1. ✅ Sistema multiplataforma funcional (web + mobile)
-2. ✅ Reconocimiento de voz integrado con >95% precisión
-3. ✅ NLP extrayendo entidades con ~88% accuracy
-4. ✅ Base de datos CRM completa y funcional
-5. ✅ Arquitectura modular y bien documentada
-6. ✅ Pruebas funcionales implementadas
-7. ✅ Seguridad con JWT y HTTPS
-8. ✅ Despliegue con Docker funcional
+1. Sistema multiplataforma funcional (web + mobile)
+2. Reconocimiento de voz integrado con >95% precisión
+3. NLP extrayendo entidades con ~88% accuracy
+4. Base de datos CRM completa y funcional
+5. Arquitectura modular y bien documentada
+6. Pruebas funcionales implementadas
+7. Seguridad con JWT y HTTPS
+8. Despliegue con Docker funcional
 
 ### 8.2. Limitaciones encontradas
 

@@ -1,10 +1,10 @@
-# 🚀 Guía de Despliegue - VoiceCRM
+# Guía de Despliegue - VoiceCRM
 
 Esta guía explica cómo desplegar y ejecutar el sistema VoiceCRM completo.
 
 ---
 
-## 📋 Prerequisitos
+## Prerequisitos
 
 ### Software necesario
 
@@ -16,12 +16,12 @@ Esta guía explica cómo desplegar y ejecutar el sistema VoiceCRM completo.
 ### Credenciales requeridas
 
 - **OpenAI API Key**: Necesaria para Whisper (speech-to-text) y GPT-4 (NLP)
-  - Obtén tu clave en: https://platform.openai.com/api-keys
-  - Costo aproximado: $0.006/minuto de audio + $0.002-0.01 por extracción NLP
+ - Obtén tu clave en: https://platform.openai.com/api-keys
+ - Costo aproximado: $0.006/minuto de audio + $0.002-0.01 por extracción NLP
 
 ---
 
-## 🐳 Opción 1: Despliegue con Docker (Recomendado)
+## Opción 1: Despliegue con Docker (Recomendado)
 
 ### Paso 1: Clonar repositorio
 
@@ -37,7 +37,7 @@ cd aud_text
 cp .env.example .env
 
 # Editar .env y añadir tu OpenAI API Key
-nano .env  # o usar tu editor preferido
+nano .env # o usar tu editor preferido
 ```
 
 **Contenido de `.env`**:
@@ -71,22 +71,22 @@ open http://localhost:8000/docs
 #### Crear usuario
 ```bash
 curl -X POST http://localhost:8000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "test@example.com",
-    "name": "Usuario Test",
-    "password": "password123"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "email": "test@example.com",
+ "name": "Usuario Test",
+ "password": "password123"
+ }'
 ```
 
 #### Login
 ```bash
 curl -X POST http://localhost:8000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "test@example.com",
-    "password": "password123"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "email": "test@example.com",
+ "password": "password123"
+ }'
 ```
 
 Guarda el `access_token` que recibes en la respuesta.
@@ -94,7 +94,7 @@ Guarda el `access_token` que recibes en la respuesta.
 #### Listar contactos (usando token)
 ```bash
 curl http://localhost:8000/api/contacts \
-  -H "Authorization: Bearer TU_ACCESS_TOKEN_AQUI"
+ -H "Authorization: Bearer TU_ACCESS_TOKEN_AQUI"
 ```
 
 ### Paso 6: Probar procesamiento de voz
@@ -115,40 +115,40 @@ espeak -v es "He quedado con Germán Palomares el próximo viernes" -w test_audi
 
 ```bash
 curl -X POST http://localhost:8000/api/interactions/voice \
-  -H "Authorization: Bearer TU_ACCESS_TOKEN_AQUI" \
-  -F "audio=@test_audio.wav"
+ -H "Authorization: Bearer TU_ACCESS_TOKEN_AQUI" \
+ -F "audio=@test_audio.wav"
 ```
 
 **Respuesta esperada**:
 ```json
 {
-  "interaction": {
-    "id": 1,
-    "contact": {
-      "id": 1,
-      "name": "Germán",
-      "surname": "Palomares",
-      "company": {
-        "name": "Acme Corporation"
-      }
-    },
-    "type": "meeting",
-    "interaction_date": "2025-11-22T00:00:00",
-    "notes": "..."
-  },
-  "transcript": "He quedado con Germán Palomares el próximo viernes",
-  "extracted_entities": {
-    "contact_name": "Germán Palomares",
-    "action_type": "meeting",
-    "date": "2025-11-22T00:00:00",
-    "notes": "..."
-  }
+ "interaction": {
+ "id": 1,
+ "contact": {
+ "id": 1,
+ "name": "Germán",
+ "surname": "Palomares",
+ "company": {
+ "name": "Acme Corporation"
+ }
+ },
+ "type": "meeting",
+ "interaction_date": "2025-11-22T00:00:00",
+ "notes": "..."
+ },
+ "transcript": "He quedado con Germán Palomares el próximo viernes",
+ "extracted_entities": {
+ "contact_name": "Germán Palomares",
+ "action_type": "meeting",
+ "date": "2025-11-22T00:00:00",
+ "notes": "..."
+ }
 }
 ```
 
 ---
 
-## 💻 Opción 2: Desarrollo local (Sin Docker)
+## Opción 2: Desarrollo local (Sin Docker)
 
 ### Backend
 
@@ -157,7 +157,7 @@ cd backend
 
 # Crear entorno virtual
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate # Windows: venv\Scripts\activate
 
 # Instalar dependencias
 pip install -r requirements.txt
@@ -169,7 +169,7 @@ psql voicecrm < ../database/seed.sql
 
 # Configurar variables de entorno
 cp .env.example .env
-nano .env  # Añadir OPENAI_API_KEY y DATABASE_URL
+nano .env # Añadir OPENAI_API_KEY y DATABASE_URL
 
 # Ejecutar servidor
 uvicorn app.main:app --reload
@@ -193,7 +193,7 @@ Ahora el frontend estará en: http://localhost:5173
 
 ---
 
-## 📱 Desarrollo de la App Móvil (React Native)
+## Desarrollo de la App Móvil (React Native)
 
 La estructura base está creada en `/mobile`. Para desarrollarla:
 
@@ -217,7 +217,7 @@ Luego escanea el QR con Expo Go en tu móvil.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Backend Tests
 
@@ -235,7 +235,7 @@ npm test
 
 ---
 
-## 🔧 Solución de problemas
+## Solución de problemas
 
 ### Error: "Database connection failed"
 
@@ -268,9 +268,9 @@ docker-compose restart
 
 **Solución**:
 1. Verifica que el nombre está en la tabla `contacts`:
-   ```bash
-   docker-compose exec db psql -U voicecrm -d voicecrm -c "SELECT name, surname FROM contacts;"
-   ```
+ ```bash
+ docker-compose exec db psql -U voicecrm -d voicecrm -c "SELECT name, surname FROM contacts;"
+ ```
 2. Añade el contacto manualmente antes de procesar el audio
 3. O modifica el código en `backend/app/api/interactions.py:46` para cambiar `auto_create=True`
 
@@ -288,7 +288,7 @@ docker-compose restart
 
 ---
 
-## 📊 Acceso a la base de datos
+## Acceso a la base de datos
 
 ### Vía Docker
 
@@ -310,28 +310,28 @@ psql postgresql://voicecrm:voicecrm123@localhost:5432/voicecrm
 
 ---
 
-## 🌐 Despliegue en producción
+## Despliegue en producción
 
 ### Recomendaciones
 
 1. **Cambiar credenciales**:
-   - `SECRET_KEY`: Generar clave aleatoria de 32+ caracteres
-   - Contraseñas de base de datos
-   - Desactivar `DEBUG=False`
+ - `SECRET_KEY`: Generar clave aleatoria de 32+ caracteres
+ - Contraseñas de base de datos
+ - Desactivar `DEBUG=False`
 
 2. **HTTPS**:
-   - Usar reverse proxy (Nginx/Caddy)
-   - Certificado SSL con Let's Encrypt
+ - Usar reverse proxy (Nginx/Caddy)
+ - Certificado SSL con Let's Encrypt
 
 3. **Escalabilidad**:
-   - Usar servicio de BD administrado (AWS RDS, GCP Cloud SQL)
-   - Considerar CDN para frontend
-   - Rate limiting en producción
+ - Usar servicio de BD administrado (AWS RDS, GCP Cloud SQL)
+ - Considerar CDN para frontend
+ - Rate limiting en producción
 
 4. **Monitoring**:
-   - Logs centralizados (ELK Stack, CloudWatch)
-   - Métricas (Prometheus + Grafana)
-   - Alertas de errores (Sentry)
+ - Logs centralizados (ELK Stack, CloudWatch)
+ - Métricas (Prometheus + Grafana)
+ - Alertas de errores (Sentry)
 
 ### Ejemplo con Docker en servidor
 
@@ -357,14 +357,14 @@ sudo nano /etc/nginx/sites-available/voicecrm
 **Configuración Nginx**:
 ```nginx
 server {
-    listen 80;
-    server_name voicecrm.tudominio.com;
+ listen 80;
+ server_name voicecrm.tudominio.com;
 
-    location / {
-        proxy_pass http://localhost:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
+ location / {
+ proxy_pass http://localhost:8000;
+ proxy_set_header Host $host;
+ proxy_set_header X-Real-IP $remote_addr;
+ }
 }
 ```
 
@@ -381,7 +381,7 @@ sudo certbot --nginx -d voicecrm.tudominio.com
 
 ---
 
-## 📚 Recursos adicionales
+## Recursos adicionales
 
 - **Documentación API**: http://localhost:8000/docs (Swagger UI)
 - **Arquitectura**: [docs/ARQUITECTURA.md](./ARQUITECTURA.md)
@@ -390,7 +390,7 @@ sudo certbot --nginx -d voicecrm.tudominio.com
 
 ---
 
-## 🆘 Soporte
+## Soporte
 
 Si encuentras problemas:
 
@@ -401,7 +401,7 @@ Si encuentras problemas:
 
 ---
 
-## ✅ Checklist de despliegue
+## Checklist de despliegue
 
 - [ ] Docker y Docker Compose instalados
 - [ ] OpenAI API Key configurada en `.env`
@@ -412,4 +412,4 @@ Si encuentras problemas:
 - [ ] Audio de prueba procesado correctamente
 - [ ] Frontend accesible (cuando esté implementado)
 
-**¡Listo! Tu sistema VoiceCRM está funcionando.** 🎉
+**¡Listo! Tu sistema VoiceCRM está funcionando.** 
